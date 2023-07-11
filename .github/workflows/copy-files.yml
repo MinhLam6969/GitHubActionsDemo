@@ -4,13 +4,21 @@ on:
     branches: [ main ]
 jobs:
   build-qooxdoo:
-    runs-on: ubuntu-latest
+    runs-on:
+      - self-hosted
+      - runner-1
     steps:
     - name: Clone repository 1
       uses: actions/checkout@v3
-    - name: repository 2
+      with:
+        repository: MinhLam6969/GitHubActionsDemo
+        path: qipcore2/qip
+    - name: Show working directory
+      run: ls
+    - name: Clone repository 2
       uses: actions/checkout@v3
       with:
         repository: MinhLam6969/test-repo1
+        path: qipcore2/qooxdoo
     - name: Show working directory
       run: ls
