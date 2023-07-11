@@ -1,19 +1,16 @@
-name: Copy files from other repos
+name: Build source
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: [ main ]
 jobs:
-  build:
-    runs-on:
-      - self-hosted
-      - runner-1
+  build-qooxdoo:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-            repository: MinhLam6969/test-repo1
-      - name: Copy File
-        run: |
-          cp /src/test-file-1.txt /src
+    - name: Clone repository 1
+      uses: actions/checkout@v3
+    - name: repository 2
+      uses: actions/checkout@v3
+      with:
+        repository: MinhLam6969/test-repo1
+    - name: Show working directory
+      run: ls
