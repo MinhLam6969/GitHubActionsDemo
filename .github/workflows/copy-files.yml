@@ -1,0 +1,19 @@
+name: Copy files from other repos
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  build:
+    runs-on:
+      - self-hosted
+      - runner-1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+            repository: MinhLam6969/test-repo1
+      - name: Copy File
+        run: |
+          cp /src/test-file-1.txt /src
